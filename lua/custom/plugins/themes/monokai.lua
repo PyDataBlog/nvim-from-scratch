@@ -44,13 +44,6 @@ return {
                 context_start_underline = false,
               },
             },
-            ---@param c Colorscheme
-            override = function(c) end,
-            ---@param cs Colorscheme
-            ---@param p ColorschemeOptions
-            ---@param Config MonokaiProOptions
-            ---@param hp Helper
-            override = function(cs: Colorscheme, p: ColorschemeOptions, Config: MonokaiProOptions, hp: Helper) end,
           })
     end
 }
