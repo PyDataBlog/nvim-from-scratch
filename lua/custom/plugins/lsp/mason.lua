@@ -1,15 +1,17 @@
 return {
   "williamboman/mason.nvim",
-  cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+  cmd = { "Mason", "MasonInstall", "MasonUpdate" },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     -- import mason
     local mason = require("mason")
 
-    -- import mason-lspconfig
+    -- import mason-lspconfig & regular mason tool installer
     local mason_lspconfig = require("mason-lspconfig")
+		local mason_tool_installer = require("mason-tool-installer")
 
     -- enable mason and configure icons
     mason.setup({
@@ -21,33 +23,6 @@ return {
         },
       },
     })
-
-    -- create MasonInstallAll command to install all non servers ie. debugger, linters, formatters, etc.
-    local others = {
-      "prettier",
-      "stylua",
-      -- Python stuff
-      "black",
-      "isort",
-      "debugpy",
-      "flake8",
-      -- JSON stuff
-      "jsonlint",
-      "jq",
-      -- Bash stuff
-      "shellcheck",
-      "beautysh",
-      -- YAML stuff
-      "yamllint",
-      "prettierd",
-      -- rust
-      "codelldb",
-      "eslint_d",
-    }
-
-    vim.api.nvim_create_user_command("MasonInstallAll", function()
-      vim.cmd("MasonInstall " .. table.concat(others, " "))
-    end)
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
@@ -81,6 +56,33 @@ return {
         "cmake",
       },
     })
+
+    mason_tool_installer.setup({
+      -- list of formatters/debuggers/linters to install
+			ensure_installed = {
+        "prettier",
+        "stylua",
+        -- Python stuff
+        "black",
+        "isort",
+        "debugpy",
+        "flake8",
+        -- JSON stuff
+        "jsonlint",
+        "jq",
+        -- Bash stuff
+        "shellcheck",
+        "beautysh",
+        -- YAML stuff
+        "yamllint",
+        "prettierd",
+        -- rust
+        "codelldb",
+        -- eslint
+        "eslint_d",
+			},
+		})
+
   end,
 }
 
