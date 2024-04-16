@@ -1,7 +1,7 @@
 -- set leader key to space
-g.mapleader = " "
+vim.g.mapleader = " "
 
-local keymap = keymap -- for conciseness
+local keymap = vim.keymap -- for conciseness
 
 ---------------------
 -- General Keymaps -------------------
