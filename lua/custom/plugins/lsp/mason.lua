@@ -1,6 +1,5 @@
 return {
   "williamboman/mason.nvim",
-  cmd = { "Mason", "MasonInstall", "MasonUpdate" },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -49,7 +48,7 @@ return {
         "helm_ls",
         "gopls",
         "docker_compose_language_service",
-        "docker_ls",
+        "dockerls",
         "cypher_ls",
         "clangd",
         "azure_pipelines_ls",

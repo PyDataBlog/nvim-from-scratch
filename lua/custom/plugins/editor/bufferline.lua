@@ -8,5 +8,10 @@ return {
       separator_style = "slant",
     },
   },
+  config = function(_, opts)
+    require("bufferline").setup {
+      options = opts,
+    }
+  end
 }
 

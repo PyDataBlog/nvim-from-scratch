@@ -1,6 +1,7 @@
 return {
   "echasnovski/mini.clue",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = true,
   version = false,
   config = function()
     local miniclue = require("mini.clue")

@@ -1,4 +1,5 @@
 local opt = vim.opt -- for conciseness
+local g = vim.g
 
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
@@ -8,6 +9,7 @@ opt.number = true         -- shows absolute line number on cursor line (when rel
 opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2    -- 2 spaces for indent width
 opt.expandtab = true  -- expand tab to spaces
+opt.smartindent = true  -- smart indent
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
@@ -41,3 +43,12 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+-- disable some default providers
+g["loaded_node_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_ruby_provider"] = 0
+
+
+-- load the default colorscheme
+vim.cmd([[colorscheme catppuccin]])

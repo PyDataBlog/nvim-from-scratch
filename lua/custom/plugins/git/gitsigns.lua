@@ -44,5 +44,16 @@ return {
       -- Text object
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
     end,
+    signs = {
+      add = { text = "│" },
+      change = { text = "│" },
+      delete = { text = "󰍵" },
+      topdelete = { text = "‾" },
+      changedelete = { text = "~" },
+      untracked = { text = "│" },
+    },
   },
+  config = function(_, opts)
+    require("gitsigns").setup(opts)
+  end
 }

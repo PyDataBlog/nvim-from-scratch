@@ -20,7 +20,6 @@ return {
         },
       },
       filetypes = {
-        markdown = false,
         help = false,
         gitcommit = false,
         gitrebase = false,

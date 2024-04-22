@@ -66,6 +66,7 @@ return {
         "gitcommit",
         "latex",
         "ruby",
+        "vim",
       },
       incremental_selection = {
         enable = true,
