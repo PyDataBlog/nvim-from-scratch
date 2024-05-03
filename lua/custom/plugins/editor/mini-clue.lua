@@ -1,6 +1,5 @@
 return {
   "echasnovski/mini.clue",
-  -- event = "VeryLazy",
   lazy = true,
   version = false,
   config = function()

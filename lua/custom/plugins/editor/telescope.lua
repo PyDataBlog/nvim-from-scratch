@@ -8,6 +8,7 @@ return {
     "folke/todo-comments.nvim",
     "debugloop/telescope-undo.nvim",
     "andrew-george/telescope-themes",
+    "dharmx/telescope-media.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -36,5 +37,6 @@ return {
     telescope.load_extension("fzf")
     telescope.load_extension("undo")
     telescope.load_extension("themes")
+    telescope.load_extension("media")
   end,
 }

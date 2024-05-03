@@ -31,11 +31,7 @@ keymap.set("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "Toggle Relative num
 
 
 -- delete single character without copying into register
--- keymap.set("n", "x", '"_x')
-
---------------------  increment/decrement numbers -------------------
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+keymap.set("n", "x", '"_x')
 
 --------------------  window management -------------------
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                   -- split window vertically
@@ -80,6 +76,9 @@ keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find str
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Find undo history" })
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
+keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch themes" })
+keymap.set("n", "<leader>tm", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
 
 -------------------- Todo Comments mappings -------------------
 keymap.set("n", "]t", "<cmd>lua require('todo-comments').jump_next()<CR>", { desc = "Next todo comment" }) -- next todo comment
@@ -133,9 +132,32 @@ keymap.set("n", "<leader>wk", "<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input('Whi
 
 
 ------------------------------  Trouble mappings ------------------------------
-keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<CR>", { desc = "Open/close trouble list" })
-keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = "Open trouble workspace diagnostics" })
-keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = "Open trouble document diagnostics" })
-keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open trouble quickfix list" })
-keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", { desc = "Open trouble location list" })
-keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<CR>", { desc = "Open todos in trouble" })
+keymap.set("n", "<leader>tx", "<cmd>TroubleToggle<CR>", { desc = "Open/close trouble list" })
+keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = "Open trouble workspace diagnostics" })
+keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", { desc = "Open trouble document diagnostics" })
+keymap.set("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open trouble quickfix list" })
+keymap.set("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", { desc = "Open trouble location list" })
+keymap.set("n", "<leader>tt", "<cmd>TodoTrouble<CR>", { desc = "Open todos in trouble" })
+
+------------------------------ Nvterm mappings ------------------------------
+keymap.set({ "n", "t" }, "<A-h>", function()
+    require("nvterm.terminal").toggle("horizontal")
+end, { noremap = true, silent = true, desc = "Toggle horizontal terminal" })
+
+keymap.set({ "n", "t" }, "<A-v>", function()
+    require("nvterm.terminal").toggle("vertical")
+end, { noremap = true, silent = true, desc = "Toggle vertical terminal" })
+
+keymap.set({ "n", "t" }, "<A-i>", function()
+    require("nvterm.terminal").toggle("float")
+end, { noremap = true, silent = true, desc = "Toggle floating terminal" })
+
+keymap.set("t", "<C-x>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
+
+------------------------------ Bufferline mappings ------------------------------
+keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close all buffers except current" })
+keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin buffer" })
+keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
