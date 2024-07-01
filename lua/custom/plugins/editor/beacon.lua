@@ -1,1 +1,1 @@
-return {'danilamihailov/beacon.nvim', lazy = true}
+return { "danilamihailov/beacon.nvim", lazy = true }

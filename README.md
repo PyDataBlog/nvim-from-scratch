@@ -1,2 +1,3 @@
 # nvim-from-scratch
-Opinionated neovim IDE 
+
+Opinionated neovim IDE
