@@ -66,6 +66,7 @@ return {
 				"isort",
 				"debugpy",
 				"flake8",
+				"jupytext",
 				-- JSON stuff
 				"jsonlint",
 				"jq",
@@ -79,6 +80,8 @@ return {
 				"codelldb",
 				-- eslint
 				"eslint_d",
+				-- sql
+				"sqlfluff",
 			},
 		})
 	end,
