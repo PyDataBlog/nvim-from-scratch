@@ -240,3 +240,9 @@ keymap.set("n", "<leader>di", "<cmd> DapStepInto <CR>", { desc = "Step into" })
 keymap.set("n", "<leader>do", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<leader>ds", "<cmd> DapStepOver <CR>", { desc = "Step over" })
 keymap.set("n", "<leader>df", "<cmd> lua.require('dap').continue()<CR>", { desc = "Start a debugging session" })
+
+------------------------------ Noice ------------------------------
+keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<CR>", { desc = "Noice dismiss notifications" })
+keymap.set("n", "<leader>np", "<cmd>Noice pick<CR>", { desc = "Noice pick notification log" })
+keymap.set("n", "<leader>ni", "<cmd>Noice history<CR>", { desc = "Noice log" })
+keymap.set("n", "<leader>nl", "<cmd>Noice last<CR>", { desc = "Noice last notification" })
