@@ -1,6 +1,3 @@
--- set leader key to space
-vim.g.mapleader = " "
-
 local keymap = vim.keymap -- for conciseness
 
 -------------------- General Keymaps -------------------
@@ -45,11 +42,11 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 --------------------  Tmux and Vim window navigation -------------------
-keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "Navigate to the left pane" }) -- navigate to the left pane (Vim or tmux)
-keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "Navigate to the bottom pane" }) -- navigate to the bottom pane (Vim or tmux)
-keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "Navigate to the top pane" }) -- navigate to the top pane (Vim or tmux)
-keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Navigate to the right pane" }) -- navigate to the right pane (Vim or tmux)
-
+-- keymap.set("n", "<C-h>", ":lua require('tmux').move_left()<CR>", { desc = "Navigate to the left pane" })
+-- keymap.set("n", "<C-j>", ":lua require('tmux').move_bottom()<CR>", { desc = "Navigate to the bottom pane" })
+-- keymap.set("n", "<C-k>", ":lua require('tmux').move_top()<CR>", { desc = "Navigate to the top pane" })
+-- keymap.set("n", "<C-l>", ":lua require('tmux').move_right()<CR>", { desc = "Navigate to the right pane" })
+-- keymap.set("n", "<C-\\>", ":lua require('tmux').move_previous()<CR>", { desc = "Navigate to the previous pane" })
 --------------------  find and replace -------------------
 keymap.set("n", "<leader>ts", '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
 keymap.set(
@@ -67,7 +64,7 @@ keymap.set(
 )
 
 --------------------  NvimTree mappings -------------------
-keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
 keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
 keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
@@ -90,16 +87,17 @@ keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch them
 keymap.set("n", "<leader>tm", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
 
 -------------------- Todo Comments mappings -------------------
-keymap.set("n", "]t", "<cmd>lua require('todo-comments').jump_next()<CR>", { desc = "Next todo comment" }) -- next todo comment
-keymap.set("n", "[t", "<cmd>lua require('todo-comments').jump_prev()<CR>", { desc = "Previous todo comment" }) -- previous todo comment
-
---------------------  Comment Toggle mappings -------------------
+-- keymap.set("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", { desc = "Comment Toggle" })
 -- keymap.set(
 -- 	"v",
 -- 	"<leader>/",
--- 	"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+-- 	":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 -- 	{ desc = "Comment Toggle" }
--- ) -- toggle comment
+-- )
+
+--------------------  Comment Toggle mappings -------------------
+keymap.set("v", "<leader>/", "gc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in visual mode
+keymap.set("n", "<leader>/", "gcc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in normal mode
 
 --------------------  Substitution commands -------------------
 keymap.set("n", "s", "<cmd>lua require('substitute').operator()<CR>", { desc = "Substitute with motion" }) -- substitute using motion
@@ -169,14 +167,14 @@ keymap.set(
 )
 
 ------------------------------  Trouble mappings ------------------------------
-keymap.set("n", "<leader>tx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
+keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
 keymap.set(
 	"n",
-	"<leader>tX",
+	"<leader>tT",
 	"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
 	{ desc = "Buffer Diagnostics (Trouble)" }
 )
-keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<CR>", { desc = "Symbols (Trouble)" })
+keymap.set("n", "<leader>tS", "<cmd>Trouble symbols toggle focus=false<CR>", { desc = "Symbols (Trouble)" })
 keymap.set(
 	"n",
 	"<leader>tl",
@@ -204,7 +202,7 @@ keymap.set("t", "<C-x>", "<C-\\><C-n>", { noremap = true, silent = true, desc = 
 ------------------------------ Bufferline mappings ------------------------------
 keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close buffer" })
 keymap.set("n", "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close all buffers except current" })
 keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin buffer" })
 keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
@@ -233,10 +231,30 @@ keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Lazy Plugin Manager" })
 ------------------------------ Mason mappings ------------------------------
 keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Mason Config" })
 
------------------------------- Debugging (DAP) mappings ------------------------------
+------------------------------ Debugging (DAP) mappings ------------------------------------
 keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle breakpoint" })
 keymap.set("n", "<leader>dc", "<cmd> DapContinue <CR>", { desc = "Continue" })
 keymap.set("n", "<leader>di", "<cmd> DapStepInto <CR>", { desc = "Step into" })
 keymap.set("n", "<leader>do", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<leader>ds", "<cmd> DapStepOver <CR>", { desc = "Step over" })
 keymap.set("n", "<leader>df", "<cmd> lua.require('dap').continue()<CR>", { desc = "Start a debugging session" })
+
+------------------------------ Neotest mappings --------------------------------------------
+keymap.set("n", "<leader>tm", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Test Method" })
+keymap.set(
+	"n",
+	"<leader>tM",
+	"<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",
+	{ desc = "Test Method DAP" }
+)
+keymap.set("n", "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { desc = "Test Class" })
+keymap.set(
+	"n",
+	"<leader>tF",
+	"<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+	{ desc = "Test Class DAP" }
+)
+keymap.set("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", { desc = "Test Summary" })
+
+------------------------------- Trim whitespace mappings -----------------------------------
+keymap.set("n", "<leader>tw", "<cmd>lua MiniTrailspace.trim()<cr>", { desc = "Trim trailing whitespace" })
