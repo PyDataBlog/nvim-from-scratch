@@ -43,9 +43,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
--- set python3 provider
-g.python3_host_prog = "~/miniconda3/bin/python"
 -- disable some default providers
+g["loaded_python_provider"] = 0
 g["loaded_node_provider"] = 0
 g["loaded_perl_provider"] = 0
 g["loaded_ruby_provider"] = 0
