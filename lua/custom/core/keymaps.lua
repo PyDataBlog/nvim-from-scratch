@@ -1,7 +1,7 @@
 local keymap = vim.keymap -- for conciseness
 
 -------------------- General Keymaps -------------------
-keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
+-- keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
 
 --------------------  CMD enter command mode with ; -------------------
 keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
@@ -41,12 +41,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
---------------------  Tmux and Vim window navigation -------------------
--- keymap.set("n", "<C-h>", ":lua require('tmux').move_left()<CR>", { desc = "Navigate to the left pane" })
--- keymap.set("n", "<C-j>", ":lua require('tmux').move_bottom()<CR>", { desc = "Navigate to the bottom pane" })
--- keymap.set("n", "<C-k>", ":lua require('tmux').move_top()<CR>", { desc = "Navigate to the top pane" })
--- keymap.set("n", "<C-l>", ":lua require('tmux').move_right()<CR>", { desc = "Navigate to the right pane" })
--- keymap.set("n", "<C-\\>", ":lua require('tmux').move_previous()<CR>", { desc = "Navigate to the previous pane" })
 --------------------  find and replace -------------------
 keymap.set("n", "<leader>ts", '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
 keymap.set(
@@ -85,15 +79,6 @@ keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Find undo his
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch themes" })
 keymap.set("n", "<leader>tm", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
-
--------------------- Todo Comments mappings -------------------
--- keymap.set("n", "<leader>/", ":lua require('Comment.api').toggle.linewise.current()<CR>", { desc = "Comment Toggle" })
--- keymap.set(
--- 	"v",
--- 	"<leader>/",
--- 	":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
--- 	{ desc = "Comment Toggle" }
--- )
 
 --------------------  Comment Toggle mappings -------------------
 keymap.set("v", "<leader>/", "gc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in visual mode
@@ -238,6 +223,7 @@ keymap.set("n", "<leader>di", "<cmd> DapStepInto <CR>", { desc = "Step into" })
 keymap.set("n", "<leader>do", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<leader>ds", "<cmd> DapStepOver <CR>", { desc = "Step over" })
 keymap.set("n", "<leader>df", "<cmd> lua.require('dap').continue()<CR>", { desc = "Start a debugging session" })
+keymap.set("n", "<leader>dq", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })
 
 ------------------------------ Neotest mappings --------------------------------------------
 keymap.set("n", "<leader>tm", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Test Method" })

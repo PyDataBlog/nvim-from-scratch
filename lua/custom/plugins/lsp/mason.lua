@@ -24,10 +24,10 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
+			-- list of language servers for mason to install
 			ensure_installed = {
 				"tailwindcss",
-				"tsserver",
+				"ts_ls",
 				"html",
 				"cssls",
 				"lua_ls",
@@ -41,7 +41,7 @@ return {
 				"julials",
 				"autotools_ls",
 				"ruff",
-				"sqlls",
+				-- "sqlls",
 				"taplo",
 				"terraformls",
 				"marksman",
