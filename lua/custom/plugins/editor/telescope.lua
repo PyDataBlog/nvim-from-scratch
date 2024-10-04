@@ -9,10 +9,36 @@ return {
 		"debugloop/telescope-undo.nvim",
 		"andrew-george/telescope-themes",
 		"dharmx/telescope-media.nvim",
+		{
+			"ThePrimeagen/harpoon",
+			branch = "harpoon2", -- Ensure correct branch for Harpoon
+		},
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local harpoon = require("harpoon")
+		harpoon:setup({})
+
+		-- Toggle telescope to show Harpoon marks
+		local conf = require("telescope.config").values
+		_G.toggle_telescope = function(harpoon_files)
+			local file_paths = {}
+			for _, item in ipairs(harpoon_files.items) do
+				table.insert(file_paths, item.value)
+			end
+
+			require("telescope.pickers")
+				.new({}, {
+					prompt_title = "Harpoon",
+					finder = require("telescope.finders").new_table({
+						results = file_paths,
+					}),
+					previewer = conf.file_previewer({}),
+					sorter = conf.generic_sorter({}),
+				})
+				:find()
+		end
 
 		telescope.setup({
 			defaults = {
@@ -27,13 +53,12 @@ return {
 			},
 			extensions = {
 				undo = {
-					-- telescope-undo.nvim config, see below
+					-- telescope-undo.nvim config
 				},
-				-- other extensions:
-				-- file_browser = { ... }
 			},
 		})
 
+		-- Load telescope extensions
 		telescope.load_extension("fzf")
 		telescope.load_extension("undo")
 		telescope.load_extension("themes")
