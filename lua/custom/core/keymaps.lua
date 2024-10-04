@@ -79,6 +79,9 @@ keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Find undo his
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch themes" })
 keymap.set("n", "<leader>tm", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
+keymap.set("n", "<leader>fh", function()
+	toggle_telescope(require("harpoon"):list())
+end, { desc = "Open Harpoon window" })
 
 --------------------  Comment Toggle mappings -------------------
 keymap.set("v", "<leader>/", "gc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in visual mode
@@ -103,41 +106,41 @@ keymap.set("n", "<leader>F", "<cmd>Fugit2<CR>", { desc = "Trigger Fugit2" })
 
 ------------------ Gitsigns mappings  -------------------
 -- Navigation
-keymap.set("n", "]h", "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = "Next Hunk" })
-keymap.set("n", "[h", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = "Previous Hunk" })
+keymap.set("n", "]g", "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = "Next Hunk" })
+keymap.set("n", "[g", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = "Previous Hunk" })
 
 -- Actions
-keymap.set("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage Hunk" })
-keymap.set("n", "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset Hunk" })
+keymap.set("n", "<leader>gs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage Hunk" })
+keymap.set("n", "<leader>gr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset Hunk" })
 keymap.set(
 	"v",
-	"<leader>hs",
+	"<leader>gs",
 	"<cmd>lua require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>",
 	{ desc = "Stage Selected Hunk" }
 )
 keymap.set(
 	"v",
-	"<leader>hr",
+	"<leader>gr",
 	"<cmd>lua require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>",
 	{ desc = "Reset Selected Hunk" }
 )
 
-keymap.set("n", "<leader>hS", "<cmd>lua require('gitsigns').stage_buffer()<CR>", { desc = "Stage Buffer" })
-keymap.set("n", "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset Buffer" })
+keymap.set("n", "<leader>gS", "<cmd>lua require('gitsigns').stage_buffer()<CR>", { desc = "Stage Buffer" })
+keymap.set("n", "<leader>gR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset Buffer" })
 
-keymap.set("n", "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo Stage Hunk" })
-keymap.set("n", "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview Hunk" })
+keymap.set("n", "<leader>gu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo Stage Hunk" })
+keymap.set("n", "<leader>gp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview Hunk" })
 
-keymap.set("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", { desc = "Blame Line" })
+keymap.set("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", { desc = "Blame Line" })
 keymap.set(
 	"n",
-	"<leader>hB",
+	"<leader>gB",
 	"<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
 	{ desc = "Toggle Line Blame" }
 )
 
-keymap.set("n", "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "Diff This" })
-keymap.set("n", "<leader>hD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Diff This ~" })
+keymap.set("n", "<leader>gd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "Diff This" })
+keymap.set("n", "<leader>gD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Diff This ~" })
 
 -- Text object
 keymap.set({ "o", "x" }, "ih", "<cmd>lua require('gitsigns').select_hunk()<CR>", { desc = "Select Hunk" })
@@ -244,3 +247,21 @@ keymap.set("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>"
 
 ------------------------------- Trim whitespace mappings -----------------------------------
 keymap.set("n", "<leader>tw", "<cmd>lua MiniTrailspace.trim()<cr>", { desc = "Trim trailing whitespace" })
+
+------------------------------- Harpoon keymaps -----------------------------------
+keymap.set("n", "<leader>ha", "<cmd>lua require('harpoon'):list():add()<cr>", { desc = "Harpoon Add File" })
+keymap.set(
+	"n",
+	"<leader>hh",
+	"<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
+	{ desc = "Harpoon Toggle Menu" }
+)
+keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon'):list():next()<cr>", { desc = "Harpoon Next" })
+keymap.set("n", "<leader>hp", "<cmd>lua require('harpoon'):list():prev()<cr>", { desc = "Harpoon Previous" })
+
+-- Keymaps for navigating to specific marks (up to 5 files)
+keymap.set("n", "<leader>h1", "<cmd>lua require('harpoon'):list():select(1)<cr>", { desc = "Harpoon File 1" })
+keymap.set("n", "<leader>h2", "<cmd>lua require('harpoon'):list():select(2)<cr>", { desc = "Harpoon File 2" })
+keymap.set("n", "<leader>h3", "<cmd>lua require('harpoon'):list():select(3)<cr>", { desc = "Harpoon File 3" })
+keymap.set("n", "<leader>h4", "<cmd>lua require('harpoon'):list():select(4)<cr>", { desc = "Harpoon File 4" })
+keymap.set("n", "<leader>h5", "<cmd>lua require('harpoon'):list():select(5)<cr>", { desc = "Harpoon File 5" })

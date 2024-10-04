@@ -1,1 +1,1 @@
-return { "takac/vim-hardtime", lazy = true }
+return { "takac/vim-hardtime", lazy = false }
