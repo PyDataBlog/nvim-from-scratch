@@ -53,7 +53,7 @@ g["loaded_ruby_provider"] = 0
 opt.cursorline = false
 
 -- load the default colorscheme
-vim.cmd([[colorscheme catppuccin-mocha]])
+-- vim.cmd([[colorscheme catppuccin-mocha]])
 
 -- start terminal in insert mode
 vim.cmd([[autocmd TermOpen * startinsert]])
