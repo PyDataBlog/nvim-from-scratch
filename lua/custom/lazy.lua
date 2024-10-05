@@ -39,7 +39,7 @@ require("lazy").setup({
 		notify = true,
 	},
 	install = {
-		colorscheme = { "catppuccin-mocha" },
+		colorscheme = { "nvchad" },
 	},
 })
 
