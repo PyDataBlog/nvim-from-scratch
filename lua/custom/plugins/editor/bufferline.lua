@@ -4,7 +4,16 @@ return {
 	version = "*",
 	opts = {
 		options = {
-			mode = "tabs",
+			mode = "buffers",
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Explorer",
+					highlight = "Directory",
+					separator = true,
+				},
+			},
+
 			separator_style = "slant",
 			diagnostics = "nvim_lsp",
 			diagnostics_indicator = function(count, level)

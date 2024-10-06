@@ -78,7 +78,7 @@ keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Find undo history" })
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch themes" })
-keymap.set("n", "<leader>tm", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
+keymap.set("n", "<leader>fM", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
 keymap.set("n", "<leader>fh", function()
 	toggle_telescope(require("harpoon"):list())
 end, { desc = "Open Harpoon window" })
@@ -265,3 +265,18 @@ keymap.set("n", "<leader>h2", "<cmd>lua require('harpoon'):list():select(2)<cr>"
 keymap.set("n", "<leader>h3", "<cmd>lua require('harpoon'):list():select(3)<cr>", { desc = "Harpoon File 3" })
 keymap.set("n", "<leader>h4", "<cmd>lua require('harpoon'):list():select(4)<cr>", { desc = "Harpoon File 4" })
 keymap.set("n", "<leader>h5", "<cmd>lua require('harpoon'):list():select(5)<cr>", { desc = "Harpoon File 5" })
+
+------------------------------- NvChad Menu mappings -----------------------------------
+-- Keyboard users
+keymap.set("n", "<leader>mo", "<cmd> lua require('menu').open('default')<cr>", { desc = "Open NvChad Menu" })
+
+-- mouse users + nvimtree users!
+keymap.set("n", "<RightMouse>", function()
+	vim.cmd.exec('"normal! \\<RightMouse>"')
+
+	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+	require("menu").open(options, { mouse = true })
+end, {})
+
+------------------------------- Mini-files mappings -----------------------------------
+keymap.set("n", "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", { desc = "Toggle Mini Files" })
