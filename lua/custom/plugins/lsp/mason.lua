@@ -41,7 +41,7 @@ return {
 				"julials",
 				"autotools_ls",
 				"ruff",
-				-- "sqlls",
+				-- "sql_ls",
 				"taplo",
 				"terraformls",
 				"marksman",
@@ -62,8 +62,6 @@ return {
 				"prettier",
 				"stylua",
 				-- Python stuff
-				"black",
-				"isort",
 				"debugpy",
 				"flake8",
 				"jupytext",

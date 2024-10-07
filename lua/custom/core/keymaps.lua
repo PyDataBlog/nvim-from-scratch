@@ -280,3 +280,20 @@ end, {})
 
 ------------------------------- Mini-files mappings -----------------------------------
 keymap.set("n", "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", { desc = "Toggle Mini Files" })
+------------------------------ Kulala mappings -----------------------------------
+keymap.set("n", "<leader>kr", "<cmd>lua require('kulala').run()<CR>", { desc = "Run the current request" })
+keymap.set("n", "<leader>kp", "<cmd>lua require('kulala').jump_prev()<CR>", { desc = "Jump to the previous request" })
+keymap.set("n", "<leader>kn", "<cmd>lua require('kulala').jump_next()<CR>", { desc = "Jump to the next request" })
+keymap.set("n", "<leader>ki", "<cmd>lua require('kulala').inspect()<CR>", { desc = "Inspect the current request" })
+
+------------------------------ Kubectl mappings -----------------------------------
+keymap.set("n", "<leader>kk", '<cmd>lua require("kubectl").toggle()<cr>', { noremap = true, silent = true })
+
+------------------------------- Overseer mappings -----------------------------------
+keymap.set("n", "<leader>ow", "<cmd>OverseerToggle<CR>", { desc = "Task list" })
+keymap.set("n", "<leader>oo", "<cmd>OverseerRun<CR>", { desc = "Run task" })
+keymap.set("n", "<leader>oq", "<cmd>OverseerQuickAction<CR>", { desc = "Action recent task" })
+keymap.set("n", "<leader>oi", "<cmd>OverseerInfo<CR>", { desc = "Overseer Info" })
+keymap.set("n", "<leader>ob", "<cmd>OverseerBuild<CR>", { desc = "Task builder" })
+keymap.set("n", "<leader>ot", "<cmd>OverseerTaskAction<CR>", { desc = "Task action" })
+keymap.set("n", "<leader>oc", "<cmd>OverseerClearCache<CR>", { desc = "Clear cache" })

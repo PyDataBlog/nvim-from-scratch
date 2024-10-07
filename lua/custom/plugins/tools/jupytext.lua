@@ -3,6 +3,7 @@ return { -- directly open ipynb files as quarto docuements
 	-- needs:
 	-- pip install jupytext
 	"GCBallesteros/jupytext.nvim",
+	ft = { "quarto", "python" },
 	opts = {
 		custom_language_formatting = {
 			python = {
@@ -18,4 +19,3 @@ return { -- directly open ipynb files as quarto docuements
 		},
 	},
 }
-

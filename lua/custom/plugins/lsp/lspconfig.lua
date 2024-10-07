@@ -16,6 +16,16 @@ return {
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+		-- used to enable autocompletion (assign to every lsp server config)
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+
+		-- Change the Diagnostic symbols in the sign column (gutter)
+		local signs = { Error = " ", Warn = " ", Hint = "💡", Info = " " }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		end
+
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -66,18 +76,6 @@ return {
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
 		})
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "💡", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
 		-- ruff on attach
 		local ruff_on_attach = function(client, bufnr)
 			if client.name == "ruff" then
@@ -142,6 +140,60 @@ return {
 				lspconfig["ruff"].setup({
 					capabilities = capabilities,
 					on_attach = ruff_on_attach,
+					init_options = {
+						settings = {
+							format = {
+								preview = true,
+							},
+							lint = {
+								enable = true,
+								preview = true,
+								select = { "E", "F", "N" },
+								extendSelect = {
+									"W",
+									"I",
+									"UP007",
+									"UP015",
+									"FAST001",
+									"FAST002",
+									"FAST003",
+									"RUF100",
+									"RUF101",
+								},
+								ignore = {},
+								extendIgnore = {},
+							},
+							codeAction = {
+								disableRuleComment = {
+									enable = true,
+								},
+								fixViolation = {
+									enable = true,
+								},
+							},
+							showSyntaxErrors = true,
+							organizeImports = true,
+							fixAll = true,
+							lineLength = 120,
+							exclude = {
+								".git",
+								".ipynb_checkpoints",
+								".mypy_cache",
+								".pyenv",
+								".pytest_cache",
+								".pytype",
+								".ruff_cache",
+								".venv",
+								".vscode",
+								"__pypackages__",
+								"_build",
+								"build",
+								"dist",
+								"site-packages",
+								"venv",
+							},
+						},
+					},
 				})
 			end,
 			["basedpyright"] = function()
@@ -149,12 +201,14 @@ return {
 				lspconfig["basedpyright"].setup({
 					capabilities = capabilities,
 					settings = {
+						disableOrganizeImports = true,
 						basedpyright = {
 							typeCheckingMode = "standard",
 						},
 						analysis = {
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
+							-- ignore = { "*" },
 						},
 					},
 				})

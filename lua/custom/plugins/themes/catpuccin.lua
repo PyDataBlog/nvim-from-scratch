@@ -4,7 +4,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
-			flavour = "auto", -- latte, frappe, macchiato, mocha
+			flavour = "mocha", -- latte, frappe, macchiato, mocha
 			background = { -- :h background
 				light = "latte",
 				dark = "mocha",
@@ -39,14 +39,37 @@ return {
 			custom_highlights = {},
 			default_integrations = true,
 			integrations = {
+				rainbow_delimiters = true,
+				render_markdown = true,
+				lsp_trouble = true,
+				dropbar = true,
 				cmp = true,
 				gitsigns = true,
 				nvimtree = true,
 				treesitter = true,
+				treesitter_context = true,
+				which_key = true,
+				dap = true,
+				dap_ui = true,
+				neotest = true,
 				notify = false,
+				noice = true,
+				ufo = true,
+				overseer = true,
+				flash = true,
+				mason = false,
+				semantic_tokens = true,
 				mini = {
 					enabled = true,
 					indentscope_color = "",
+				},
+				telescope = {
+					enabled = true,
+				},
+				indent_blankline = {
+					enabled = true,
+					scope_color = "text", -- catppuccin color (eg. `lavender`) Default: text
+					colored_indent_levels = false,
 				},
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},

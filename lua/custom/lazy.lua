@@ -16,13 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "custom.plugins" },
+	{ import = "custom.plugins.lsp" },
 	{ import = "custom.plugins.completion" },
 	{ import = "custom.plugins.dap" },
 	{ import = "custom.plugins.editor" },
 	{ import = "custom.plugins.git" },
 	{ import = "custom.plugins.go" },
-	{ import = "custom.plugins.lsp" },
-	{ import = "custom.plugins.motion" },
 	{ import = "custom.plugins.python" },
 	{ import = "custom.plugins.rust" },
 	{ import = "custom.plugins.themes" },

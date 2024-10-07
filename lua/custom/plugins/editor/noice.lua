@@ -4,21 +4,29 @@ return {
 	config = function()
 		require("noice").setup({
 			lsp = {
-				signature = { enabled = false },
-				hover = { enabled = false },
-				message = { enabled = false },
 				override = {
-					-- override the default lsp markdown formatter with Noice
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					-- override the lsp markdown formatter with Noice
 					["vim.lsp.util.stylize_markdown"] = true,
-					-- override cmp documentation with Noice (needs the other options to work)
 					["cmp.entry.get_documentation"] = true,
 				},
 			},
+			routes = {
+				{
+					filter = {
+						event = "msg_show",
+						any = {
+							{ find = "%d+L, %d+B" },
+							{ find = "; after #%d+" },
+							{ find = "; before #%d+" },
+						},
+					},
+					view = "mini",
+				},
+			},
 			presets = {
-				lsp_doc_border = false,
 				bottom_search = true,
+				-- command_palette = true,
+				long_message_to_split = true,
 			},
 		})
 	end,
