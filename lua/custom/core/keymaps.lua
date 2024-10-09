@@ -297,3 +297,18 @@ keymap.set("n", "<leader>oi", "<cmd>OverseerInfo<CR>", { desc = "Overseer Info" 
 keymap.set("n", "<leader>ob", "<cmd>OverseerBuild<CR>", { desc = "Task builder" })
 keymap.set("n", "<leader>ot", "<cmd>OverseerTaskAction<CR>", { desc = "Task action" })
 keymap.set("n", "<leader>oc", "<cmd>OverseerClearCache<CR>", { desc = "Clear cache" })
+
+------------------------------- Toggle Term mappings ---------------------------------
+-- ToggleTerm keymaps (normal mode)
+keymap.set("n", "<leader>\\l", ":ToggleTermSendCurrentLine<CR>", { desc = "Send current line to terminal" })
+keymap.set("n", "<leader>\\t", ":lua _HTOP()<CR>", { desc = "Toggle htop terminal" })
+keymap.set("n", "<leader>\\i", ":lua _IPYTHON()<CR>", { desc = "Toggle IPython terminal" })
+keymap.set("n", "<leader>\\j", ":lua _JULIA()<CR>", { desc = "Toggle Julia terminal" })
+-- ToggleTerm keymaps (visual mode)
+keymap.set("v", "<leader>\\b", ":'<,'>ToggleTermSendVisualLines<CR>", { desc = "Send selected lines to terminal" })
+keymap.set(
+	"v",
+	"<leader>\\s",
+	":'<,'>ToggleTermSendVisualSelection<CR>",
+	{ desc = "Send visual selection to terminal" }
+)
