@@ -1,5 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
 		local nvimtree = require("nvim-tree")

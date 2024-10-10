@@ -312,3 +312,5 @@ keymap.set(
 	":'<,'>ToggleTermSendVisualSelection<CR>",
 	{ desc = "Send visual selection to terminal" }
 )
+------------------------------- Oil mappings -----------------------------------
+keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil" })
