@@ -1,44 +1,53 @@
 return {
 	"echasnovski/mini.starter",
-	version = "*",
+	version = false,
+	event = "VimEnter",
 	config = function()
-		require("mini.starter").setup({
-			-- Whether to open starter buffer on VimEnter. Not opened if Neovim was
-			-- started with intent to show something else.
-			autoopen = true,
+		local logo = table.concat({
+			"            ██████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗          ",
+			"            ██╔══██╗██╔══██╗██║   ██║██║████╗ ████║          ",
+			"            ██████╔╝██████╔╝██║   ██║██║██╔████╔██║          ",
+			"            ██╔══██╗██╔══██╗╚██╗ ██╔╝██║██║╚██╔╝██║          ",
+			"            ██████╔╝██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║          ",
+			"            ╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝          ",
+		}, "\n")
+		local pad = string.rep(" ", 22)
+		local new_section = function(name, action, section)
+			return { name = name, action = action, section = pad .. section }
+		end
+		local starter = require("mini.starter")
+		local config = {
+			evaluate_single = true,
+			header = logo,
+			items = {
+				starter.sections.sessions(5, true),
+				starter.sections.telescope(),
+				new_section("Quit", "qa", "Exit"),
+			},
+			content_hooks = {
+				starter.gen_hook.adding_bullet(pad .. "░ ", false),
+				starter.gen_hook.aligning("center", "center"),
+			},
+		}
+		starter.setup(config)
 
-			-- Whether to evaluate action of single active item
-			evaluate_single = false,
-
-			-- Items to be displayed. Should be an array with the following elements:
-			-- - Item: table with <action>, <name>, and <section> keys.
-			-- - Function: should return one of these three categories.
-			-- - Array: elements of these three types (i.e. item, array, function).
-			-- If `nil` (default), default items will be used (see |mini.starter|).
-			items = nil,
-
-			-- Header to be displayed before items. Converted to single string via
-			-- `tostring` (use `\n` to display several lines). If function, it is
-			-- evaluated first. If `nil` (default), polite greeting will be used.
-			header = nil,
-
-			-- Footer to be displayed after items. Converted to single string via
-			-- `tostring` (use `\n` to display several lines). If function, it is
-			-- evaluated first. If `nil` (default), default usage help will be shown.
-			footer = nil,
-
-			-- Array  of functions to be applied consecutively to initial content.
-			-- Each function should take and return content for 'Starter' buffer (see
-			-- |mini.starter| and |MiniStarter.content| for more details).
-			content_hooks = nil,
-
-			-- Characters to update query. Each character will have special buffer
-			-- mapping overriding your global ones. Be careful to not add `:` as it
-			-- allows you to go into command mode.
-			query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_-.",
-
-			-- Whether to disable showing non-error feedback
-			silent = false,
+		-- Update the footer with lazy stats after plugins have loaded
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "LazyDone",
+			callback = function()
+				local stats = require("lazy").stats()
+				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+				local pad_footer = string.rep(" ", 8)
+				starter.config.footer = pad_footer
+					.. "⚡ Neovim loaded "
+					.. stats.count
+					.. " plugins in "
+					.. ms
+					.. "ms"
+				if vim.bo.filetype == "ministarter" then
+					MiniStarter.refresh()
+				end
+			end,
 		})
 	end,
 }

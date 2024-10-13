@@ -3,6 +3,7 @@ return {
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
+		-- Set up Catppuccin
 		require("catppuccin").setup({
 			flavour = "mocha", -- latte, frappe, macchiato, mocha
 			background = { -- :h background
@@ -68,11 +69,60 @@ return {
 				},
 				indent_blankline = {
 					enabled = true,
-					scope_color = "text", -- catppuccin color (eg. `lavender`) Default: text
+					scope_color = "text", -- catppuccin color (e.g., `lavender`) Default: text
 					colored_indent_levels = false,
 				},
-				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+				-- For more plugin integrations, please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
+		})
+
+		-- Retrieve the color palette
+		local palette = require("catppuccin.palettes").get_palette("mocha")
+
+		if palette == nil then
+			return
+		end
+
+		-- Directly integrate the line-number-change-mode functionality
+		local group = vim.api.nvim_create_augroup("LineNumberChangeMode", { clear = true })
+
+		vim.api.nvim_create_autocmd("ModeChanged", {
+			group = group,
+			callback = function()
+				local new_mode = vim.v.event.new_mode
+				local line_number_map = {
+					i = {
+						bg = palette.green,
+						fg = palette.mantle,
+						bold = true,
+					},
+					n = {
+						bg = palette.blue,
+						fg = palette.mantle,
+						bold = true,
+					},
+					R = {
+						bg = palette.maroon,
+						fg = palette.mantle,
+						bold = true,
+					},
+					v = {
+						bg = palette.mauve,
+						fg = palette.mantle,
+						bold = true,
+					},
+					V = {
+						bg = palette.mauve,
+						fg = palette.mantle,
+						bold = true,
+					},
+				}
+
+				local highlight = line_number_map[new_mode]
+				if highlight then
+					vim.api.nvim_set_hl(0, "CursorLineNr", highlight)
+				end
+			end,
 		})
 	end,
 }

@@ -76,6 +76,7 @@ return {
 				{ name = "otter" }, -- quarto language features
 				{ name = "nvim_lsp_signature_help" }, -- signature help
 				{ name = "calc" }, -- calculator
+				{ name = "git" },
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
