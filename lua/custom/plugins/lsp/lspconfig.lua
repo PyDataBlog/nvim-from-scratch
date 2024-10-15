@@ -112,7 +112,7 @@ return {
 				"clangd",
 				"azure_pipelines_ls",
 				"cmake",
-				"nil_ls",
+				-- "nil_ls",
 			},
 			automatic_installation = true,
 		})

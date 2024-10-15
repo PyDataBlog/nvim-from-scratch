@@ -28,6 +28,12 @@ return {
 				-- command_palette = true,
 				long_message_to_split = true,
 			},
+			-- popupmenu = {
+			-- 	enabled = false,
+			-- },
+			-- messages = {
+			-- 	enabled = false,
+			-- },
 		})
 	end,
 	dependencies = {

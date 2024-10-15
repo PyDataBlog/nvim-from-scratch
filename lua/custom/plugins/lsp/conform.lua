@@ -31,6 +31,7 @@ return {
 				},
 			},
 			formatters_by_ft = {
+				go = { "goimports", "gofumpt", "golines", "gomodifytags" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
@@ -40,7 +41,7 @@ return {
 				html = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
-				markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
+				markdown = { "prettier", "markdown-toc" },
 				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 				nix = { "nixfmt" },
 				terraform = { "terraform_fmt" },
