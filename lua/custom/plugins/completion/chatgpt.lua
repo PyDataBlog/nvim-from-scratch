@@ -1,6 +1,5 @@
 return {
 	"jackMort/ChatGPT.nvim",
-	-- event = "VeryLazy",
 	lazy = true,
 	config = function()
 		require("chatgpt").setup()

@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.files",
-	version = false,
+	version = "*",
 	lazy = true,
 	config = function()
 		require("mini.files").setup({

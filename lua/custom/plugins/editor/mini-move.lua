@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.move",
-	version = false,
+	version = "*",
 	config = function()
 		require("mini.move").setup({
 			-- Module mappings. Use `''` (empty string) to disable one.
