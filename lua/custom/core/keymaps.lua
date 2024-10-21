@@ -1,8 +1,5 @@
 local keymap = vim.keymap -- for conciseness
 
--------------------- General Keymaps -------------------
--- keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
-
 --------------------  CMD enter command mode with ; -------------------
 keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -225,7 +222,7 @@ keymap.set("n", "<leader>dc", "<cmd> DapContinue <CR>", { desc = "Continue" })
 keymap.set("n", "<leader>di", "<cmd> DapStepInto <CR>", { desc = "Step into" })
 keymap.set("n", "<leader>do", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<leader>ds", "<cmd> DapStepOver <CR>", { desc = "Step over" })
-keymap.set("n", "<leader>df", "<cmd> lua.require('dap').continue()<CR>", { desc = "Start a debugging session" })
+keymap.set("n", "<leader>df", "<cmd> lua require('dap').continue()<CR>", { desc = "Start a debugging session" })
 keymap.set("n", "<leader>dq", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })
 
 ------------------------------ Neotest mappings --------------------------------------------

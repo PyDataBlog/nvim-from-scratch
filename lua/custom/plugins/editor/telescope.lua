@@ -13,6 +13,7 @@ return {
 			"ThePrimeagen/harpoon",
 			branch = "harpoon2", -- Ensure correct branch for Harpoon
 		},
+		"nvim-telescope/telescope-file-browser.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -55,6 +56,9 @@ return {
 				undo = {
 					-- telescope-undo.nvim config
 				},
+				file_browser = {
+					hijack_netrw = false,
+				},
 			},
 		})
 
@@ -63,5 +67,7 @@ return {
 		telescope.load_extension("undo")
 		telescope.load_extension("themes")
 		telescope.load_extension("media")
+		telescope.load_extension("file_browser")
+		telescope.load_extension("noice")
 	end,
 }
