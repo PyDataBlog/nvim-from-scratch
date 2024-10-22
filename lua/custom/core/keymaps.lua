@@ -278,6 +278,7 @@ end, {})
 
 ------------------------------- Mini-files mappings -----------------------------------
 keymap.set("n", "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", { desc = "Toggle Mini Files" })
+
 ------------------------------ Kulala mappings -----------------------------------
 keymap.set("n", "<leader>kr", "<cmd>lua require('kulala').run()<CR>", { desc = "Run the current request" })
 keymap.set("n", "<leader>kp", "<cmd>lua require('kulala').jump_prev()<CR>", { desc = "Jump to the previous request" })
