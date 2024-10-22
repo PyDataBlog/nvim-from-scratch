@@ -76,6 +76,7 @@ keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Find undo his
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 keymap.set("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Switch themes" })
 keymap.set("n", "<leader>fM", "<cmd>Telescope media<CR>", { desc = "Files with media support" })
+keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "Find keymaps" })
 keymap.set("n", "<leader>fh", function()
 	toggle_telescope(require("harpoon"):list())
 end, { desc = "Open Harpoon window" })
