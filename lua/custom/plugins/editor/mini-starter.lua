@@ -33,17 +33,12 @@ return {
 
 		-- Update the footer with lazy stats after plugins have loaded
 		vim.api.nvim_create_autocmd("User", {
-			pattern = "LazyDone",
+			pattern = "LazyVimStarted",
 			callback = function()
 				local stats = require("lazy").stats()
 				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 				local pad_footer = string.rep(" ", 8)
-				starter.config.footer = pad_footer
-					.. "⚡ Neovim loaded "
-					.. stats.count
-					.. " plugins in "
-					.. ms
-					.. "ms"
+				starter.config.footer = pad_footer .. "⚡ BBVim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
 				if vim.bo.filetype == "ministarter" then
 					MiniStarter.refresh()
 				end
