@@ -1,6 +1,9 @@
 return {
 	"stevearc/overseer.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		"stevearc/dressing.nvim",
+	},
 	cmd = {
 		"OverseerOpen",
 		"OverseerClose",

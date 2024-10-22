@@ -1,6 +1,6 @@
 return {
 	"folke/noice.nvim",
-	event = "CmdlineEnter",
+	event = "VeryLazy",
 	config = function()
 		require("noice").setup({
 			lsp = {
@@ -31,9 +31,9 @@ return {
 			-- popupmenu = {
 			-- 	enabled = false,
 			-- },
-			-- messages = {
-			-- 	enabled = false,
-			-- },
+			messages = {
+				enabled = false,
+			},
 		})
 	end,
 	dependencies = {

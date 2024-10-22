@@ -64,6 +64,7 @@ return {
 				"typescript",
 				"vim",
 				"vue",
+				"xml",
 				"yaml",
 				"zig",
 			},
