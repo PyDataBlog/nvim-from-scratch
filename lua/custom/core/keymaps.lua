@@ -5,11 +5,11 @@ keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
 
 --------------------  Movement Keys in Insert Mode -------------------
 keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of line" }) -- move to the beginning of the line
-keymap.set("i", "<C-e>", "<End>", { desc = "Move End of line" }) -- move to the end of the line
-keymap.set("i", "<C-h>", "<Left>", { desc = "Move Left" }) -- move left
-keymap.set("i", "<C-l>", "<Right>", { desc = "Move Right" }) -- move right
-keymap.set("i", "<C-j>", "<Down>", { desc = "Move Down" }) -- move down
-keymap.set("i", "<C-k>", "<Up>", { desc = "Move Up" }) -- move up
+keymap.set("i", "<C-e>", "<End>", { desc = "Move End of line" })         -- move to the end of the line
+keymap.set("i", "<C-h>", "<Left>", { desc = "Move Left" })               -- move left
+keymap.set("i", "<C-l>", "<Right>", { desc = "Move Right" })             -- move right
+keymap.set("i", "<C-j>", "<Down>", { desc = "Move Down" })               -- move down
+keymap.set("i", "<C-k>", "<Up>", { desc = "Move Up" })                   -- move up
 
 --------------------  use jk to exit insert mode -------------------
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -19,23 +19,23 @@ keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { desc = "Clear search high
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 --------------------  File operations -------------------
-keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "File Save" }) -- save current file
+keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "File Save" })         -- save current file
 keymap.set("n", "<C-c>", "<cmd>%y+<CR>", { desc = "File Copy whole" }) -- copy the whole file to clipboard
 
 --------------------  Toggle Line numbers -------------------
-keymap.set("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" }) -- toggle line numbers
+keymap.set("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" })       -- toggle line numbers
 keymap.set("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "Toggle Relative number" }) -- toggle relative line numbers
 
 --------------------  window management -------------------
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                   -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })                 -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })                    -- make split windows equal width & height
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })               -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })                     -- open new tab
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })              -- close current tab
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })                     --  go to next tab
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })                 --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 --------------------  find and replace -------------------
@@ -55,10 +55,10 @@ keymap.set(
 )
 
 --------------------  NvimTree mappings -------------------
-keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })                         -- toggle file explorer
 keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })                     -- collapse file explorer
+keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })                       -- refresh file explorer
 
 -------------------- LazyGit mappings -------------------
 keymap.set("n", "<leader>lg", ":LazyGit<CR>", { noremap = true, silent = true, desc = "Open LazyGit" })
@@ -82,13 +82,13 @@ keymap.set("n", "<leader>fh", function()
 end, { desc = "Open Harpoon window" })
 
 --------------------  Comment Toggle mappings -------------------
-keymap.set("v", "<leader>/", "gc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in visual mode
+keymap.set("v", "<leader>/", "gc", { noremap = true, silent = true, desc = "Comment Toggle" })  -- toggle comment in visual mode
 keymap.set("n", "<leader>/", "gcc", { noremap = true, silent = true, desc = "Comment Toggle" }) -- toggle comment in normal mode
 
 --------------------  Substitution commands -------------------
-keymap.set("n", "s", "<cmd>lua require('substitute').operator()<CR>", { desc = "Substitute with motion" }) -- substitute using motion
-keymap.set("n", "ss", "<cmd>lua require('substitute').line()<CR>", { desc = "Substitute line" }) -- substitute entire line
-keymap.set("n", "S", "<cmd>lua require('substitute').eol()<CR>", { desc = "Substitute to end of line" }) -- substitute from cursor to end of line
+keymap.set("n", "s", "<cmd>lua require('substitute').operator()<CR>", { desc = "Substitute with motion" })  -- substitute using motion
+keymap.set("n", "ss", "<cmd>lua require('substitute').line()<CR>", { desc = "Substitute line" })            -- substitute entire line
+keymap.set("n", "S", "<cmd>lua require('substitute').eol()<CR>", { desc = "Substitute to end of line" })    -- substitute from cursor to end of line
 keymap.set("x", "s", "<cmd>lua require('substitute').visual()<CR>", { desc = "Substitute in visual mode" }) -- substitute within visual selection
 
 --------------------  Formatting via LSP
@@ -313,3 +313,24 @@ keymap.set(
 )
 ------------------------------- Oil mappings -----------------------------------
 keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil" })
+
+------------------------------- Yanky mappings -----------------------------------
+keymap.set("n", "<leader>fp", function() require("telescope").extensions.yank_history.yank_history({}) end,
+	{ desc = "Open Yank History" })
+keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)", { desc = "Yank text" })
+keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", { desc = "Put yanked text after cursor" })
+keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", { desc = "Put yanked text before cursor" })
+keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", { desc = "Put yanked text after selection" })
+keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { desc = "Put yanked text before selection" })
+-- keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)", { desc = "Select previous entry through yank history" })
+-- keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)", { desc = "Select next entry through yank history" })
+keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)", { desc = "Put indented after cursor (linewise)" })
+keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)", { desc = "Put indented before cursor (linewise)" })
+keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)", { desc = "Put indented after cursor (linewise)" })
+keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)", { desc = "Put indented before cursor (linewise)" })
+keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)", { desc = "Put and indent right" })
+keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)", { desc = "Put and indent left" })
+keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)", { desc = "Put before and indent right" })
+keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)", { desc = "Put before and indent left" })
+keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)", { desc = "Put after applying a filter" })
+keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)", { desc = "Put before applying a filter" })
