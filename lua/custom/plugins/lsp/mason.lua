@@ -20,8 +20,8 @@ return {
 		})
 
 		mason_tool_installer.setup({
-			-- list of formatters/debuggers/linters to install
 			ensure_installed = {
+				-------- LIST OF FORMATTERS/DEBUGGERS/LINTERS TO INSTALL -------------
 				"prettier",
 				"stylua",
 				-- Python stuff
@@ -50,7 +50,42 @@ return {
 				"tflint",
 				-- docker
 				"hadolint",
+				-- go stuff
+				"gofumpt",
+				"goimports",
+				"golines",
+				"gomodifytags",
+				------- LANGUAGE SERVERS ----------
+				"tailwindcss",
+				"ts_ls",
+				"html",
+				"cssls",
+				"lua_ls",
+				"graphql",
+				"emmet_ls",
+				"prismals",
+				"basedpyright",
+				"jsonls",
+				"bashls",
+				"yamlls",
+				"julials",
+				"ruff",
+				"sqls",
+				"taplo",
+				"terraformls",
+				"marksman",
+				"helm_ls",
+				"gopls",
+				"docker_compose_language_service",
+				"dockerls",
+				"cypher_ls",
+				"clangd",
+				"azure_pipelines_ls",
+				"cmake",
+				-- "nil_ls",
 			},
+			auto_update = true,
+			run_on_start = true,
 		})
 	end,
 }

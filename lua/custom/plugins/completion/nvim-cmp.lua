@@ -19,6 +19,14 @@ return {
 		"jmbuhr/otter.nvim", -- quarto language features
 		"hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
 		"hrsh7th/cmp-calc", -- calculator
+		{
+			"MattiasMTS/cmp-dbee",
+			dependencies = {
+				{ "kndndrj/nvim-dbee" },
+			},
+			ft = "sql", -- optional but good to have
+			opts = {}, -- needed
+		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -77,6 +85,7 @@ return {
 				{ name = "nvim_lsp_signature_help" }, -- signature help
 				{ name = "calc" }, -- calculator
 				{ name = "git" },
+				{ name = "cmp-dbee" },
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {

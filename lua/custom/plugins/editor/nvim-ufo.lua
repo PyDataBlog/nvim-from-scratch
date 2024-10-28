@@ -14,18 +14,8 @@ return {
 			foldopen = "+",
 			foldsep = "│",
 			foldclose = "-",
-			-- stl = "",
 			eob = "⋅",
 		}
-
-		-- Custom fold text function
-		_G.custom_fold_text = function()
-			local line = vim.fn.getline(vim.v.foldstart)
-			local lines_count = vim.v.foldend - vim.v.foldstart + 1
-			return " " .. line .. " ⋯ " .. lines_count .. " lines "
-		end
-
-		vim.opt.foldtext = "v:lua.custom_fold_text()"
 	end,
 	dependencies = {
 		"kevinhwang91/promise-async",
@@ -103,6 +93,37 @@ return {
 		close_fold_kinds_for_ft = { default = { "imports" } },
 		provider_selector = function()
 			return { "treesitter", "indent" }
+		end,
+		fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+			local result = {}
+			local line = vim.fn.getline(lnum)
+			local lines_count = endLnum - lnum + 1
+			local fold_info = ("  %d lines "):format(lines_count)
+			local fold_info_width = vim.fn.strdisplaywidth(fold_info)
+
+			-- Calculate available width for the line content
+			local content_width = width - fold_info_width
+			local line_content = line
+			local line_content_width = vim.fn.strdisplaywidth(line_content)
+
+			if line_content_width > content_width then
+				line_content = truncate(line_content, content_width)
+				line_content_width = vim.fn.strdisplaywidth(line_content)
+			end
+
+			-- Decorative padding
+			local fill_char = "─"
+			local padding_width = content_width - line_content_width
+			local padding = fill_char:rep(math.floor(padding_width / vim.fn.strdisplaywidth(fill_char)))
+
+			-- Construct the virtual text without highlighting
+			table.insert(result, { line_content, nil }) -- No highlight group
+			if padding ~= "" then
+				table.insert(result, { padding, nil }) -- No highlight group
+			end
+			table.insert(result, { fold_info, nil }) -- No highlight group
+
+			return result
 		end,
 	},
 }

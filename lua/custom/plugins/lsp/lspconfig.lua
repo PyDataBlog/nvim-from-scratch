@@ -82,40 +82,6 @@ return {
 			end
 		end
 
-		mason_lspconfig.setup({
-			-- list of language servers for mason to install
-			ensure_installed = {
-				"tailwindcss",
-				"ts_ls",
-				"html",
-				"cssls",
-				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"basedpyright",
-				"jsonls",
-				"bashls",
-				"yamlls",
-				"julials",
-				"autotools_ls",
-				"ruff",
-				"sqls",
-				"taplo",
-				"terraformls",
-				"marksman",
-				"helm_ls",
-				"gopls",
-				"docker_compose_language_service",
-				"dockerls",
-				"cypher_ls",
-				"clangd",
-				"azure_pipelines_ls",
-				"cmake",
-				-- "nil_ls",
-			},
-			automatic_installation = true,
-		})
 		mason_lspconfig.setup_handlers({
 			-- Default handler for all installed servers
 			function(server_name)
