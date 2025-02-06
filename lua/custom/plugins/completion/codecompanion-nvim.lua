@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
-		"hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
+		{ "iguanacucumber/magazine.nvim", name = "nvim-cmp" }, -- Optional: For using slash commands and variables in the chat buffer
 		"nvim-telescope/telescope.nvim", -- Optional: For using slash commands
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
@@ -22,6 +22,18 @@ return {
 			strategies = {
 				chat = {
 					adapter = "copilot",
+					slash_commands = {
+						["file"] = {
+							opts = {
+								provider = "telescope",
+							},
+						},
+						["buffer"] = {
+							opts = {
+								provider = "telescope",
+							},
+						},
+					},
 				},
 				inline = {
 					adapter = "copilot",
